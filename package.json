@@ -1,0 +1,25 @@
+{
+  "name": "cgk",
+  "version": "1.0.0",
+  "description": "Project 2 - Casey, George, &amp; Kali",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cferg019/CGK.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cferg019/CGK/issues"
+  },
+  "homepage": "https://github.com/cferg019/CGK#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-handlebars": "^3.1.0",
+    "mysql": "^2.18.1",
+    "sequelize": "^5.21.4"
+  }
+}

@@ -15,8 +15,10 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.STRING,
             defaultValue: "Movie"
         },
-        watched: DataTypes.BOOLEAN,
-        defaultValue: false
+        watched: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: false
+        }
     });
     return NewMedia;
 };

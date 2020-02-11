@@ -54,3 +54,22 @@ body {
     transform: scale(1.0);
     transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
 }
+
+#logbtn, #signbtn {
+    font-size: 20px;
+    border-radius: 0.5rem;
+    font-family: 'Montserrat', sans-serif;
+    padding: 7px;
+}
+
+#logbtn, #signbtn :hover {
+    font-size: 20px;
+    border-radius: 0.5rem;
+}
+
+/* COLORS:
+#6d905c	(109,144,92)
+#427a6b	(66,122,107)
+#355258	(53,82,88)
+#1f2d3a	(31,45,58)
+#0d1215	(13,18,21) */

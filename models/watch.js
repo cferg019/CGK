@@ -1,5 +1,5 @@
 module.exports = function (sequelize, DataTypes) {
-    var NewMedia = sequelize.define("newMedia", {
+    var NewMedia = sequelize.define("NewMedia", {
         name: {
             type: DataTypes.STRING,
             allowNull: false,

@@ -3,7 +3,7 @@ var express = require('express');
 var db = require('../models')
 
 var router = express.Router();
-var watch = require('../models/watch.js');
+// var watch = require('../models/watch.js');
 
 // get route -> index
 router.get('/', function (req, res) {
@@ -11,6 +11,9 @@ router.get('/', function (req, res) {
 });
 
 router.get('/watch', function (req, res) {
+    // var newmedia = {
+
+    // }
     db.NewMedia.findAll({ raw: true }).then(function(newmedia) {
         console.log('got these shows back', newmedia)
         res.render('index', { show_data: newmedia });

@@ -1,21 +1,10 @@
 // MODAL FUNCTIONS
-// var modal = document.querySelector(".modal");
-// var trigger = document.querySelector(".trigger");
-// var closeButton = document.querySelector(".close-button");
 
-// function toggleModal() {
-//     modal.classList.toggle("show-modal");
-// }
+var modal = document.querySelector(".modal");
+var logTrigger = document.querySelector("button#logbtn.trigger");
+var signTrigger = document.querySelector("button#signbtn.trigger");
+var closeButton = document.querySelector(".close-button");
 
-// function windowOnClick(event) {
-//     if (event.target === modal) {
-//         toggleModal();
-//     }
-// }
-
-// trigger.addEventListener("click", toggleModal);
-// closeButton.addEventListener("click", toggleModal);
-// window.addEventListener("click", windowOnClick);
 
 $(document).ready(function () {
 
@@ -32,8 +21,7 @@ $(document).ready(function () {
         location.reload();
       });
     });
-  
-
+ 
     $("#mediaSubmitForm").on("submit", function (event) {
       if ($("#mediaName").val() === "") {
         event.preventDefault();
@@ -42,4 +30,19 @@ $(document).ready(function () {
     })
   });
   
-  
+if(logTrigger) {
+    logTrigger.addEventListener("click", toggleModal)
+}
+
+if(signTrigger) {
+    signTrigger.addEventListener("click", toggleModal)
+}
+
+if(closeButton) {
+    closeButton.addEventListener("click", toggleModal)
+}
+
+if(window) {
+    window.addEventListener("click", windowOnClick)
+}
+

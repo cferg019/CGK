@@ -21,6 +21,11 @@ var routes = require("./controllers/watchControllers.js");
 
 app.use(routes);
 
+var userRoutes = require("./controllers/userController.js");
+
+app.use(userRoutes);
+
+
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
 db.sequelize.sync({ force: true }).then(function() {

@@ -20,16 +20,13 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-md-12 text-center" id="top-bar">
-            <h1> watchlist </h1>
-        </div>
         {{!-- WATCHLIST --}}
         <div>
             <div id="to-watch">UP NEXT</div>
             <div class="watchlist">
                 {{#each show_data}}
-                    {{#unless this.watched}}
-                    {{/unless}}
+                {{#unless this.watched}}
+                {{/unless}}
                 {{/each}}
             </div>
 
@@ -69,42 +66,42 @@
     <div class="row">
         <div class="col-md-12 text-center enter_section">
             <p>You can add a show or movie you'd like to watch here:</p>
-            //<form id="mediaSubmitForm" action="/watch/create" method="POST">
-            //    <input type="text" class="form-control" name="name" value="" id="mediaName"><br>
-            //    <div class="form-group">
-            //        <select class="form-control col-md-3" id="genre">
-            //            <option>Select Genre</option>
-            //            <option>Horror</option>
-            //            <option>Comedy</option>
-            //            <option>Drama</option>
-            //            <option>Romance</option>
-            //            <option>Action</option>
-            //        </select>
-            //    </div>
-//
-//
-  //              <button type="submit" class="btn btn-danger btn-sm" id="text-enter-button">Submit</button>
-    //        </form>
-            <div id="form-container">            
-              <form method="POST">
-                <input type="text">Title
-                <input type="radio" name="media-type" value="movie"> Movie
-                <input type="radio" name="media-type" value="tv"> TV Show
-                <select name="genre">
-                    <option value="action">Action</option>
-                    <option value="animated">Animated</option>
-                    <option value="comedy">Comedy</option>
-                    <option value="documentary">Documentary</option>
-                    <option value="drama">Drama</option>
-                    <option value="horror">Horror</option>
-                    <option value="romantic">Romantic</option>
-                    <option value="sci-fi">Sci-Fi</option>
-                    <option value="thriller">Thriller</option>
-                </select>
+            {{!-- <form id="mediaSubmitForm" action="/watch/create" method="POST">
+                <input type="text" class="form-control" name="name" value="" id="mediaName"><br>
+                <div class="form-group">
+                    <select class="form-control col-md-3" id="genre">
+                        <option>Select Genre</option>
+                        <option>Horror</option>
+                        <option>Comedy</option>
+                        <option>Drama</option>
+                        <option>Romance</option>
+                        <option>Action</option>
+                    </select>
+                </div>
 
-                <input type="submit" value="Submit">Submit
-              </form>
-            <p id="error"></p>
+
+                <button type="submit" class="btn btn-danger btn-sm" id="text-enter-button">Submit</button>
+            </form> --}}
+            <div id="form-container">
+                <form method="POST" id="mediaSubmitForm" action="/watch/create">
+                    <input type="text" id="mediaName" name="name" value="">Title
+                    <input type="radio" name="media-type" value="movie"> Movie
+                    <input type="radio" name="media-type" value="tv"> TV Show
+                    <select name="genre" id="genre">
+                        <option value="action">Action</option>
+                        <option value="animated">Animated</option>
+                        <option value="comedy">Comedy</option>
+                        <option value="documentary">Documentary</option>
+                        <option value="drama">Drama</option>
+                        <option value="horror">Horror</option>
+                        <option value="romantic">Romantic</option>
+                        <option value="sci-fi">Sci-Fi</option>
+                        <option value="thriller">Thriller</option>
+                    </select>
+
+                    <input type="submit" value="Submit" id="text-enter-button">Submit
+                </form>
+                <p id="error"></p>
+            </div>
         </div>
     </div>
-</div>

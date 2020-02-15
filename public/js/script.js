@@ -5,7 +5,16 @@ var logTrigger = document.querySelector("button#logbtn.trigger");
 var signTrigger = document.querySelector("button#signbtn.trigger");
 var closeButton = document.querySelector(".close-button");
 
+function toggleModal() {	
+    modal.classList.toggle("show-modal");	
+}	
 
+function windowOnClick(event) {	$(document).ready(function () {
+    if (event.target === modal) {	
+        toggleModal();	
+    }	
+}
+                                                  
 $(document).ready(function () {
 
     $(".watchedForm").on("submit", function (event) {

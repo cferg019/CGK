@@ -16,3 +16,78 @@
         <h1>Hello, I am a sign-up modal!</h1>
     </div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{{!-- casey's handlebar code - add front end functionality --}}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 text-center" id="top-bar">
+            <h1> watchlist </h1>
+        </div>
+        <div class="col-md-6 text-center" class="task">
+            <div class="row">
+                {{#each show_data}}
+                {{#unless this.watched}}
+                <div class="col-md-9 text-center">
+                    <pre>
+                        {{!-- {{this.id}}.  --}}
+                        {{this.name}}
+					</pre>
+                    <!-- {{this.Date}} -->
+                </div>
+                <div class="col-md-3 text-center">
+                    <form class="watchedForm button-size">
+                        <input input type="hidden" class="mediaID" type="text" value={{this.id}}>
+                        <button type="submit" class="btn btn-outline-danger btn-sm">Watched?</button>
+                    </form>
+                </div>
+                {{/unless}}
+                {{/each}}
+            </div>
+        </div>
+        <div class="col-md-6 text-center" class="task">
+            {{#each show_data}}
+            {{#if this.watched}}
+            <input class="form-control" type="text" placeholder="{{this.id}} . {{this.name}}" readonly>
+            {{/if}}
+            {{/each}}
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 text-center enter_section">
+            <p>You can add a show or movie you'd like to watch here:</p>
+            <form id="mediaSubmitForm" action="/watch/create" method="POST">
+                <input type="text" class="form-control" name="name" value="" id="mediaName"><br>
+                <div class="form-group">
+                    <select class="form-control col-md-3" id="genre">
+                        <option>Select Genre</option>
+                        <option>Horror</option>
+                        <option>Comedy</option>
+                        <option>Drama</option>
+                        <option>Romance</option>
+                        <option>Action</option>
+                    </select>
+                </div>
+
+
+                <button type="submit" class="btn btn-danger btn-sm" id="text-enter-button">Submit</button>
+            </form>
+            <p id="error"></p>
+        </div>
+    </div>
+</div>

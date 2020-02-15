@@ -1,4 +1,3 @@
-
 var express = require('express');
 
 var db = require('../models')
@@ -23,7 +22,7 @@ router.post('/watch/create', function (req, res) {
     db.NewMedia.create({
         name: req.body.name,
         genre: req.body.genre,
-        mediaType: req.body.mediaType,
+        // mediaType: req.body.mediaType,
         watched: false
     }).then(function(show) {
         console.log('created show', show);

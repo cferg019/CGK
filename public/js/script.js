@@ -1,6 +1,7 @@
 // MODAL FUNCTIONS
 var modal = document.querySelector(".modal");
-var trigger = document.querySelector(".trigger");
+var logTrigger = document.querySelector("button#logbtn.trigger");
+var signTrigger = document.querySelector("button#signbtn.trigger");
 var closeButton = document.querySelector(".close-button");
 
 function toggleModal() {
@@ -13,6 +14,18 @@ function windowOnClick(event) {
     }
 }
 
-trigger.addEventListener("click", toggleModal);
-closeButton.addEventListener("click", toggleModal);
-window.addEventListener("click", windowOnClick);
+if(logTrigger) {
+    logTrigger.addEventListener("click", toggleModal)
+}
+
+if(signTrigger) {
+    signTrigger.addEventListener("click", toggleModal)
+}
+
+if(closeButton) {
+    closeButton.addEventListener("click", toggleModal)
+}
+
+if(window) {
+    window.addEventListener("click", windowOnClick)
+}

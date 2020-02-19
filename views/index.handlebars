@@ -1,107 +1,137 @@
-<div id="main">watch list</div>
+<div>
+    <div id="main">watch list</div>
+    <div id="description">You can add a show or movie you'd like to watch here:</div>
+</div>
 
 {{!-- LOG IN OR SIGN UP MODALS --}}
+<div id="modal-wrapper">
 
-<button class="trigger" id="logbtn">Log In</button>
-<div class="modal">
-    <div class="modal-content">
-        <span class="close-button">&times;</span>
-        <h1>Hello, I am a log-in modal!</h1>
+    {{!-- LOG IN MODAL --}}
+    <button class="trigger" id="logbtn">Log In</button>
+    <div class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <div>Log In</div>
+            <div id="login-info">
+                <div>
+                    <i class="fas fa-envelope fa-2x" id="email-icon"></i>
+                    <input type="email" id="defaultForm-email" class="form-control validate" class="modal-inputs">
+                    <label class="user-info" data-error="wrong" data-success="right" for="defaultForm-email"></label>
+                </div>
+
+                <div class="md-form mb-4">
+                    <i class="fas fa-key fa-2x" id="password-icon"></i>
+                    <input type="password" id="defaultForm-pass" class="form-control validate">
+                    <label class="user-info" data-error="wrong" data-success="right" for="defaultForm-pass"
+                        class="modal-inputs"></label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{!-- SIGN UP MODAL --}}
+    <button class="trigger" id="signbtn">Sign Up</button>
+    <div class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <div>Sign Up</div>
+
+            <div id="signup-info">
+                <div>
+                    <i class="fas fa-user fa-2x" id="user-icon"></i>
+                    <input type="text" id="orangeForm-name" class="form-control validate">
+                    <label data-error="wrong" data-success="right" for="orangeForm-name">Your name</label>
+                </div>
+                <div>
+                    <i class="fas fa-envelope fa-2x" id="email-icon"></i>
+                    <input type="email" id="defaultForm-email" class="form-control validate" class="modal-inputs">
+                    <label class="user-info" data-error="wrong" data-success="right" for="defaultForm-email"></label>
+                </div>
+
+                <div class="md-form mb-4">
+                    <i class="fas fa-key fa-2x" id="password-icon"></i>
+                    <input type="password" id="defaultForm-pass" class="form-control validate">
+                    <label class="user-info" data-error="wrong" data-success="right" for="defaultForm-pass"
+                        class="modal-inputs"></label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{{!-- ADDING NEW CONTENT --}}
+<div id="new-media-container">
+
+    <div id="form-container">
+        <form method="POST" id="mediaSubmitForm" action="/watch/create">
+            <input type="text" id="mediaName" name="name" value=""> Title
+            <input type="radio" class="media-radio" name="media-type" value="movie"> Movie
+            <input type="radio" class="media-radio" name="media-type" value="tv"> TV Show
+            <select name="genre" id="genre">
+                <option value="action">Action</option>
+                <option value="animated">Animated</option>
+                <option value="comedy">Comedy</option>
+                <option value="documentary">Documentary</option>
+                <option value="drama">Drama</option>
+                <option value="horror">Horror</option>
+                <option value="romantic">Romantic</option>
+                <option value="sci-fi">Sci-Fi</option>
+                <option value="thriller">Thriller</option>
+            </select>
+            <button type="submit" value="" id="text-enter-button"><i class="fas fa-check fa-lg"></i></button>
+        </form>
+        <p id="error"></p>
+    </div>
+
+</div>
+
+{{!-- WATCHLIST --}}
+
+<div>
+
+
+
+</div>
+<div id="col-2">
+    <div class="col-md-6 text-center" class="task">
+        {{#each show_data}}
+        {{#if this.watched}}
+        <input class="form-control" type="text" placeholder="{{this.id}} . {{this.name}}" readonly>
+        {{/if}}
+        {{/each}}
     </div>
 </div>
 
-<button class="trigger" id="signbtn">Sign Up</button>
-<div class="modal">
-    <div class="modal-content">
-        <span class="close-button">&times;</span>
-        <h1>Hello, I am a sign-up modal!</h1>
-    </div>
-</div>
+{{!-- WATCH LIST SECTION  --}}
+<div id="container">
 
-<div class="container">
-    <div class="row">
-        {{!-- WATCHLIST --}}
-        <div>
-            <div id="to-watch">UP NEXT</div>
-            <div class="watchlist">
+    <div id="col-1">
+        <div id="unwatched">UP NEXT:
+            <div class="content-section">
                 {{#each show_data}}
                 {{#unless this.watched}}
+                <div class="content">{{name}}</div>
+                <button id="watch-content" placeholder={{this.id}}>Watched?</button>
                 {{/unless}}
                 {{/each}}
             </div>
-
         </div>
-        <div class="col-md-6 text-center" class="task">
-            <div class="row">
+    </div>
+
+    <div id="col-2">
+        <div id="watched">WATCHED:
+            <div class="content-section">
                 {{#each show_data}}
-                {{#unless this.watched}}
-                <div class="col-md-9 text-center">
-                    <pre>
-                        {{!-- {{this.id}}.  --}}
-                        {{this.name}}
-					</pre>
-                    <!-- {{this.Date}} -->
-                </div>
-                <div class="col-md-3 text-center">
-                    <form class="watchedForm button-size">
-                        <input input type="hidden" class="mediaID" type="text" value={{this.id}}>
-                        <button type="submit" class="btn btn-outline-danger btn-sm">Watched?</button>
-                    </form>
-                </div>
-                {{/unless}}
+                {{#if this.watched}}
+                <div class="delete">{{name}}</div>
+                <button id="remove-from-list" placeholder={{this.id}}>Remove from List</button>
+                {{/if}}
                 {{/each}}
             </div>
         </div>
-        <div class="col-md-6 text-center" class="task">
-            {{#each show_data}}
-            {{#if this.watched}}
-            <input class="form-control" type="text" placeholder="{{this.id}} . {{this.name}}" readonly>
-            {{/if}}
-            {{/each}}
-        </div>
     </div>
+
 </div>
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-12 text-center enter_section">
-            <p>You can add a show or movie you'd like to watch here:</p>
-            {{!-- <form id="mediaSubmitForm" action="/watch/create" method="POST">
-                <input type="text" class="form-control" name="name" value="" id="mediaName"><br>
-                <div class="form-group">
-                    <select class="form-control col-md-3" id="genre">
-                        <option>Select Genre</option>
-                        <option>Horror</option>
-                        <option>Comedy</option>
-                        <option>Drama</option>
-                        <option>Romance</option>
-                        <option>Action</option>
-                    </select>
-                </div>
-
-
-                <button type="submit" class="btn btn-danger btn-sm" id="text-enter-button">Submit</button>
-            </form> --}}
-            <div id="form-container">
-                <form method="POST" id="mediaSubmitForm" action="/watch/create">
-                    <input type="text" id="mediaName" name="name" value="">Title
-                    <input type="radio" name="media-type" value="movie"> Movie
-                    <input type="radio" name="media-type" value="tv"> TV Show
-                    <select name="genre" id="genre">
-                        <option value="action">Action</option>
-                        <option value="animated">Animated</option>
-                        <option value="comedy">Comedy</option>
-                        <option value="documentary">Documentary</option>
-                        <option value="drama">Drama</option>
-                        <option value="horror">Horror</option>
-                        <option value="romantic">Romantic</option>
-                        <option value="sci-fi">Sci-Fi</option>
-                        <option value="thriller">Thriller</option>
-                    </select>
-
-                    <input type="submit" value="Submit" id="text-enter-button">Submit
-                </form>
-                <p id="error"></p>
-            </div>
-        </div>
-    </div>
+</div>

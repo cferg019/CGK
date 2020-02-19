@@ -14,9 +14,13 @@ router.get('/watch', function (req, res) {
     // var newmedia = {
 
     // }
-    db.NewMedia.findAll({ raw: true }).then(function(newmedia) {
+    db.NewMedia.findAll({
+        raw: true
+    }).then(function (newmedia) {
         console.log('got these shows back', newmedia)
-        res.render('index', { show_data: newmedia });
+        res.render('index', {
+            show_data: newmedia
+        });
     });
 });
 
@@ -27,7 +31,7 @@ router.post('/watch/create', function (req, res) {
         genre: req.body.genre,
         // mediaType: req.body.mediaType,
         watched: false
-    }).then(function(show) {
+    }).then(function (show) {
         console.log('created show', show);
         res.redirect('/');
     })
@@ -41,7 +45,18 @@ router.put('/watch/:id', function (req, res) {
         where: {
             id: req.params.id
         }
-    }).then(function(result) {
+    }).then(function (result) {
+        res.sendStatus(200);
+    })
+});
+
+// delete route -> back to index
+router.delete('/watch/:id', function (req, res) {
+    db.NewMedia.destroy({
+        where: {
+            id: req.params.id
+        }
+    }).then(function (result) {
         res.sendStatus(200);
     })
 });

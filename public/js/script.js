@@ -39,6 +39,20 @@ $(document).ready(function () {
             $("#error").text("Please fill out all fields.")
         }
     })
+
+
+    $(".delete").on("click", function () {
+        console.log("you got clicked", $(this).attr("id"));
+        event.preventDefault();
+
+        $.ajax({
+            url: "/watch/" + $(this).attr("id"),
+            type: "delete",
+        }).then(function (data) {
+            console.log(data);
+            window.location.reload();
+        })
+    })
 });
 
 if (logTrigger) {

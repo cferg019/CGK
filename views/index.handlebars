@@ -7,58 +7,74 @@
 <div id="modal-wrapper">
 
     {{!-- LOG IN MODAL --}}
-    <button class="trigger" id="logbtn">Log In</button>
-    <div class="modal">
-        <div class="modal-content">
-            <span class="close-button">&times;</span>
-            <div>Log In</div>
-            <div id="login-info">
-                <div>
-                    <i class="fas fa-envelope fa-2x" id="email-icon"></i>
-                    <input type="email" id="defaultForm-email" class="form-control validate" class="modal-inputs">
-                    <label class="user-info" data-error="wrong" data-success="right" for="defaultForm-email"></label>
-                </div>
 
-                <div class="md-form mb-4">
-                    <i class="fas fa-key fa-2x" id="password-icon"></i>
-                    <input type="password" id="defaultForm-pass" class="form-control validate">
-                    <label class="user-info" data-error="wrong" data-success="right" for="defaultForm-pass"
-                        class="modal-inputs"></label>
-                </div>
-            </div>
-        </div>
+<button class="trigger" id="logbtn">Log In</button>
+<div class="modal" id="loginmodal">
+    <div class="modal-content">
+        <span class="close-button" id="closeButtonLogIn">&times;</span>
+        <h1>Hello, I am a log-in modal!</h1>
+        <div class="funnyname">
+        <h2>Login Form</h2>
+        <form class="login" id="login-info">
+          <div class="form-group">
+            <i class="fas fa-envelope fa-2x" id="email-icon"></i>
+            <label for="exampleInputEmail1" class="user-info" data-error="wrong" data-success="right"></label>
+            <input type="email" class="form-control validate modal-inputs" id="email-input" placeholder="Email">
+          </div>
+          <div class="form-group">
+            <i class="fas fa-key fa-2x" id="password-icon"></i>
+            <label for="exampleInputPassword1"class="user-info modal-inputs" data-error="wrong" data-success="right">Password</label>
+            <input type="password" class="form-control validate" id="password-input" placeholder="Password">
+          </div>
+          <button type="submit" class="btn btn-default">Login</button>
+        </form>
+        <br />
+        <p>Or sign up <a href="/">here</a></p>
+      </div>
     </div>
 
     {{!-- SIGN UP MODAL --}}
-    <button class="trigger" id="signbtn">Sign Up</button>
-    <div class="modal">
-        <div class="modal-content">
-            <span class="close-button">&times;</span>
-            <div>Sign Up</div>
-
-            <div id="signup-info">
-                <div>
-                    <i class="fas fa-user fa-2x" id="user-icon"></i>
-                    <input type="text" id="orangeForm-name" class="form-control validate">
-                    <label data-error="wrong" data-success="right" for="orangeForm-name">Your name</label>
-                </div>
-                <div>
-                    <i class="fas fa-envelope fa-2x" id="email-icon"></i>
-                    <input type="email" id="defaultForm-email" class="form-control validate" class="modal-inputs">
-                    <label class="user-info" data-error="wrong" data-success="right" for="defaultForm-email"></label>
-                </div>
-
-                <div class="md-form mb-4">
-                    <i class="fas fa-key fa-2x" id="password-icon"></i>
-                    <input type="password" id="defaultForm-pass" class="form-control validate">
-                    <label class="user-info" data-error="wrong" data-success="right" for="defaultForm-pass"
-                        class="modal-inputs"></label>
-                </div>
-            </div>
-        </div>
-    </div>
 
 </div>
+
+
+<button class="trigger" id="signbtn">Sign Up</button>
+<div class="modal" id="signupmodal">
+    <div class="modal-content">
+        <span class="close-button" id="closeButtonSignUp">&times;</span>
+            <div>Sign Up</div>
+        <div>
+        <h2>Sign Up Form</h2>
+        <form class="signup" id="signup-info">
+           <div>
+             <i class="fas fa-user fa-2x" id="user-icon"></i>
+             <input type="text" id="orangeForm-name" class="form-control validate">
+             <label data-error="wrong" data-success="right" for="orangeForm-name">Your name</label>
+          </div>
+          <div class="form-group">
+            <i class="fas fa-envelope fa-2x" id="email-icon"></i>
+            <label for="exampleInputEmail1" class="user-info" data-error="wrong" data-success="right">Email address</label>
+            <input type="email" class="form-control validate modal-inputs" id="email-input" placeholder="Email">
+          </div>
+          <div class="form-group">
+            <i class="fas fa-key fa-2x" id="password-icon"></i>
+            <label for="exampleInputPassword1" class="user-info modal-inputs" data-error="wrong" data-success="right">Password</label>
+            <input type="password" class="form-control validate" id="password-input" placeholder="Password">
+          </div>
+          <div style="display: none" id="alert" class="alert alert-danger" role="alert">
+            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+            <span class="sr-only">Error:</span> <span class="msg"></span>
+          </div>
+          <button type="submit" class="btn btn-default">Sign Up</button>
+        </form>
+        <br />
+        <p>Or log in <a href="/login">here</a></p>
+      </div>
+
+
+
+
+
 
 {{!-- ADDING NEW CONTENT --}}
 <div id="new-media-container">

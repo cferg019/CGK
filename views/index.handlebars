@@ -7,47 +7,54 @@
 <div id="modal-wrapper">
 
     {{!-- LOG IN MODAL --}}
-
     <button class="trigger" id="logbtn">Log In</button>
     <div class="modal" id="loginmodal">
         <div class="modal-content">
             <span class="close-button" id="closeButtonLogIn">&times;</span>
-            <h1>Hello, I am a log-in modal!</h1>
+
+            {{!-- INSIDE MODAL --}}
             <div class="funnyname">
-                <h2>Login Form</h2>
+                <h2 id="log-title">Log In</h2>
                 <form class="login" id="login-info">
                     <div class="form-group">
-                        <i class="fas fa-envelope fa-2x" id="email-icon"></i>
-                        <label for="exampleInputEmail1" class="user-info" data-error="wrong"
-                            data-success="right"></label>
-                        <input type="email" class="form-control validate modal-inputs" id="email-input"
-                            placeholder="Email">
+                        <div class="input-wrapper">
+                            <span class="fas fa-envelope fa-2x" id="email-icon"></span>
+                            <label for="exampleInputEmail1" class="user-info" data-error="wrong"
+                                data-success="right"></label>
+                            <input type="email" class="form-control validate modal-inputs" id="email-input"
+                                placeholder="Email">
+                        </div>
                     </div>
                     <div class="form-group">
-                        <i class="fas fa-key fa-2x" id="password-icon"></i>
-                        <label for="exampleInputPassword1" class="user-info modal-inputs" data-error="wrong"
-                            data-success="right">Password</label>
-                        <input type="password" class="form-control validate" id="password-input" placeholder="Password">
+                        <div class="input-wrapper">
+                            <span class="fas fa-key fa-2x" id="password-icon"></span>
+                            <label for="exampleInputPassword1" class="user-info modal-inputs" data-error="wrong"
+                                data-success="right"></label>
+                            <input type="password" class="form-control validate" id="password-input"
+                                placeholder="Password">
+                        </div>
                     </div>
-                    <button type="submit" class="btn btn-default">Login</button>
+                    {{!-- <div>
+                        <button type="submit" class="modal-btn">Login</button>
+                    </div> --}}
                 </form>
                 <br />
-                <p>Or sign up <a href="/">here</a></p>
+                <div class="redirect">Or sign up <a href="/">here</a></div>
             </div>
         </div>
 
-        {{!-- SIGN UP MODAL --}}
-
     </div>
 
+
+    {{!-- SIGN UP MODAL --}}
 
     <button class="trigger" id="signbtn">Sign Up</button>
     <div class="modal" id="signupmodal">
         <div class="modal-content">
             <span class="close-button" id="closeButtonSignUp">&times;</span>
-            <div>Sign Up</div>
+            {{!-- INSIDE SIGN UP MODAL --}}
             <div>
-                <h2>Sign Up Form</h2>
+                <h2 id="sign-title">Sign Up</h2>
                 <form class="signup" id="signup-info">
                     <div>
                         <i class="fas fa-user fa-2x" id="user-icon"></i>
@@ -71,16 +78,13 @@
                         <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
                         <span class="sr-only">Error:</span> <span class="msg"></span>
                     </div>
-                    <button type="submit" class="btn btn-default">Sign Up</button>
+                    <button type="submit" class="modal-btn">Sign Up</button>
                 </form>
                 <br />
-                <p>Or log in <a href="/login">here</a></p>
+                <div class="redirect">Or log in <a href="/">here</a></div>
             </div>
-
         </div>
-
     </div>
-
 
 
 
@@ -108,23 +112,6 @@
             <p id="error"></p>
         </div>
 
-    </div>
-
-    {{!-- WATCHLIST --}}
-
-    <div>
-
-
-
-    </div>
-    <div id="col-2">
-        <div class="col-md-6 text-center" class="task">
-            {{#each show_data}}
-            {{#if this.watched}}
-            <input class="form-control" type="text" placeholder="{{this.id}} . {{this.name}}" readonly>
-            {{/if}}
-            {{/each}}
-        </div>
     </div>
 
     {{!-- WATCH LIST SECTION  --}}

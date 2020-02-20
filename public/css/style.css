@@ -11,6 +11,10 @@ p {
     font-weight: bold;
 }
 
+a {
+    text-decoration: none;
+}
+
 #main{
     color: #fff;
     font-family: 'Bebas Neue', cursive;
@@ -84,6 +88,10 @@ p {
     color: #427a6b;
 }
 
+#email-icon, #user-icon {
+    flex: 1;
+}
+
 .user-info {
     color: #0d1215;
 }
@@ -95,9 +103,34 @@ input {
     font-family: 'Montserrat', sans-serif;
 }
 
-option {
-    font-size: 16px;
-    font-family: 'Montserrat', sans-serif;
+#log-title, #sign-title {
+    color: #0d1215;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 36px;
+    margin: auto;
+    padding: 5px;
+}
+
+#input-wrapper {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+
+#email-input, #password-input {
+    flex: 1;
+}
+
+.redirect {
+    color: #0d1215;
+    text-decoration: none;
+}
+
+.form-group {
+    justify-items: center;
+    margin: 0 auto;
+    padding: 2px;
+    width: 40%;
 }
 
 /* NEW CONTENT SECTION */
@@ -132,6 +165,12 @@ option {
     line-height: 2;
     outline: none;
 }
+
+option {
+    font-size: 16px;
+    font-family: 'Montserrat', sans-serif;
+}
+
 #text-enter-button {
     background-color: #1f2d3a;
     border-radius: 7px;
@@ -156,7 +195,6 @@ option {
 }
 
 /* WATCHLIST SECTION */
-
 #container {
     color: #0d1215;
     display: flex;

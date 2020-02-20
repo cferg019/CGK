@@ -37,15 +37,24 @@ $(document).ready(function () {
         }
     })
 
-
-    
-
-    $(".delete").on("click", function () {
-        console.log("you got clicked", $(this).attr("id"));
+    $("#watch-content").on("click", function (event) {
         event.preventDefault();
-
+        var mediaID = $(this).attr("data-id")
+        console.log(mediaID);
         $.ajax({
-            url: "/watch/" + $(this).attr("id"),
+            method: "PUT",
+            url: "/watch/" + mediaID
+        }).then(function (data) {
+            // reload page to display new media proper column
+            location.reload();
+        });
+    });
+
+    $("#remove-from-list").on("click", function () {
+        console.log("you got clicked", $(this).attr("data-id"));
+        event.preventDefault();
+        $.ajax({
+            url: "/watch/" + $(this).attr("data-id"),
             type: "delete",
         }).then(function (data) {
             console.log(data);

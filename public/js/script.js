@@ -37,7 +37,7 @@ $(document).ready(function () {
         }
     })
 
-    $("#watch-content").on("click", function (event) {
+    $(".watch-content").on("click", function (event) {
         event.preventDefault();
         var mediaID = $(this).attr("data-id")
         console.log(mediaID);
@@ -50,7 +50,7 @@ $(document).ready(function () {
         });
     });
 
-    $("#remove-from-list").on("click", function () {
+    $(".remove-from-list").on("click", function () {
         console.log("you got clicked", $(this).attr("data-id"));
         event.preventDefault();
         $.ajax({

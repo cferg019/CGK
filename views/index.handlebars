@@ -124,7 +124,7 @@
                     {{#each show_data}}
                     {{#unless this.watched}}
                     <div class="content">{{name}}</div>
-                    <button id="watch-content" data-id={{this.id}}>Watched?</button>
+                    <button class="watch-content" data-id={{this.id}}>Watched?</button>
                     {{/unless}}
                     {{/each}}
                 </form>
@@ -138,7 +138,7 @@
                 {{#each show_data}}
                 {{#if this.watched}}
                 <div class="delete">{{name}}</div>
-                <button id="remove-from-list" data-id={{this.id}}>Remove from List</button>
+                <button class="remove-from-list" data-id={{this.id}}>Remove from List</button>
                 {{/if}}
                 {{/each}}
             </div>

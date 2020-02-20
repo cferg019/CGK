@@ -284,7 +284,7 @@ option {
     padding: 5px;
 }
 
-#remove-from-list, #watch-content {
+.remove-from-list, .watch-content {
     font-family: 'Bebas Neue', cursive;
     font-size: 22px;
     background-color: #1f2d3a;
@@ -293,19 +293,19 @@ option {
     outline: none;
 }
 
-#remove-from-list, #watch-content:hover {
+.remove-from-list, .watch-content:hover {
     background-color:#427a6b;
     color: #fff;
     outline: none;
 }
 
-#remove-from-list:active {
+.remove-from-list:active {
     box-shadow: 0 5px #666;
     transform: translateY(4px);
     outline: none;
 }
 
-#watch-content:active {
+.watch-content:active {
     box-shadow: 0 5px #666;
     transform: translateY(4px);
     outline: none;

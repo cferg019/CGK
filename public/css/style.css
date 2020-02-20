@@ -1,14 +1,25 @@
 body {
     font-family: 'Montserrat', sans-serif;
-    background: #0d1215;
+    background-image: radial-gradient(circle, #0d1215, #1f2d3a, #355258);
+    /* background: #0d1215; */
     text-align: center;
-    color: white;
+    color: #fff;
+}
+
+p {
+    color: red;
+    font-weight: bold;
 }
 
 #main{
     color: #fff;
     font-family: 'Bebas Neue', cursive;
-    font-size: 64px;
+    font-size: 78px;
+    padding: 15px;
+}
+
+#description {
+    padding-bottom: 30px;
 }
 
 .modal {
@@ -61,11 +72,142 @@ body {
     border-radius: 0.5rem;
     font-family: 'Montserrat', sans-serif;
     padding: 7px;
+    margin: auto;
 }
 
 #logbtn, #signbtn :hover {
     font-size: 20px;
     border-radius: 0.5rem;
+}
+
+#email-icon, #password-icon, #user-icon {
+    color: #427a6b;
+}
+
+.user-info {
+    color: #0d1215;
+}
+
+input {
+    line-height: 1.5;
+    outline: none;
+    font-size: 16px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+option {
+    font-size: 16px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* NEW CONTENT SECTION */
+#new-media-container {
+    border-radius: 7px;
+    color: #0d1215;
+    display: flex;
+    font-family: 'Montserrat', sans-serif;
+    justify-content: center;
+    margin: auto;
+    padding: 20px;
+    width: 60%;
+}
+#form-container {
+    background-color: #fff;
+    border-radius: 7px;
+    box-shadow: 3px 3px 5px lightgrey;
+    padding: 10px;
+}
+#mediaSubmitForm {
+    border-radius: 7px;
+    padding: 5px;
+}
+.media-raido {
+    outline: none;
+    color: #1f2d3a;
+}
+
+#genre {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    line-height: 2;
+    outline: none;
+}
+#text-enter-button {
+    background-color: #1f2d3a;
+    border-radius: 7px;
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    margin: auto;
+    padding: 7px;
+    outline: none;
+}
+
+#text-enter-button:hover {
+    background-color:#427a6b;
+    color: #fff;
+    outline: none;
+}
+
+#text-enter-button:active {
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+    outline: none;
+}
+
+/* WATCHLIST SECTION */
+
+#container {
+    color: #0d1215;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+
+#col-1, #col-2 {
+    align-items: stretch;
+    background-color: #fff;
+    border-radius: 7px;
+    box-shadow: 3px 3px 5px lightgrey;
+    color: #0d1215;
+    width: 45%;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+}
+
+#unwatched, #watched {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 30px;
+}
+
+.content-section {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    padding: 20px;
+}
+
+.content {
+    margin: auto;
+    padding: 5px;
+}
+
+#watch-content {
+    border-radius: 7px;
+    outline: none;
+}
+
+#remove-from-list, #watch-content {
+    font-size: 14px;
+}
+
+/* pre {
+    font-family: 'Montserrat', sans-serif;
+    color: #0d1215;
+} */
+
+#watched-btn {
+    font-family: 'Montserrat', sans-serif;
 }
 
 /* COLORS:

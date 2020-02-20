@@ -37,6 +37,7 @@ $(document).ready(function () {
         }
     })
 
+
     var signUpForm = $("form.signup");
     var emailInput = $("input#email-input");
     var passwordInput = $("input#password-input");
@@ -76,6 +77,24 @@ $(document).ready(function () {
         $("#alert .msg").text(err.responseJSON);
         $("#alert").fadeIn(500);
     }
+
+    $(".delete").on("click", function () {
+        console.log("you got clicked", $(this).attr("id"));
+        event.preventDefault();
+
+        $.ajax({
+            url: "/watch/" + $(this).attr("id"),
+            type: "delete",
+        }).then(function (data) {
+            console.log(data);
+            window.location.reload();
+        })
+    })
+
+
+
+
+
 });
 
 

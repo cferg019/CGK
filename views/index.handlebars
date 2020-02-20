@@ -1,6 +1,12 @@
-<div id="main">watch list</div>
+<div>
+    <div id="main">watch list</div>
+    <div id="description">You can add a show or movie you'd like to watch here:</div>
+</div>
 
 {{!-- LOG IN OR SIGN UP MODALS --}}
+<div id="modal-wrapper">
+
+    {{!-- LOG IN MODAL --}}
 
 <button class="trigger" id="logbtn">Log In</button>
 <div class="modal" id="loginmodal">
@@ -9,14 +15,16 @@
         <h1>Hello, I am a log-in modal!</h1>
         <div class="funnyname">
         <h2>Login Form</h2>
-        <form class="login">
+        <form class="login" id="login-info">
           <div class="form-group">
-            <label for="exampleInputEmail1">Email address</label>
-            <input type="email" class="form-control" id="email-input" placeholder="Email">
+            <i class="fas fa-envelope fa-2x" id="email-icon"></i>
+            <label for="exampleInputEmail1" class="user-info" data-error="wrong" data-success="right"></label>
+            <input type="email" class="form-control validate modal-inputs" id="email-input" placeholder="Email">
           </div>
           <div class="form-group">
-            <label for="exampleInputPassword1">Password</label>
-            <input type="password" class="form-control" id="password-input" placeholder="Password">
+            <i class="fas fa-key fa-2x" id="password-icon"></i>
+            <label for="exampleInputPassword1"class="user-info modal-inputs" data-error="wrong" data-success="right">Password</label>
+            <input type="password" class="form-control validate" id="password-input" placeholder="Password">
           </div>
           <button type="submit" class="btn btn-default">Login</button>
         </form>
@@ -24,23 +32,34 @@
         <p>Or sign up <a href="/">here</a></p>
       </div>
     </div>
+
+    {{!-- SIGN UP MODAL --}}
+
 </div>
+
 
 <button class="trigger" id="signbtn">Sign Up</button>
 <div class="modal" id="signupmodal">
     <div class="modal-content">
         <span class="close-button" id="closeButtonSignUp">&times;</span>
-        <h1>Hello, I am a sign-up modal!</h1>
-        <div class="col-md-6 col-md-offset-3">
+            <div>Sign Up</div>
+        <div>
         <h2>Sign Up Form</h2>
-        <form class="signup">
-          <div class="form-group">
-            <label for="exampleInputEmail1">Email address</label>
-            <input type="email" class="form-control" id="email-input" placeholder="Email">
+        <form class="signup" id="signup-info">
+           <div>
+             <i class="fas fa-user fa-2x" id="user-icon"></i>
+             <input type="text" id="orangeForm-name" class="form-control validate">
+             <label data-error="wrong" data-success="right" for="orangeForm-name">Your name</label>
           </div>
           <div class="form-group">
-            <label for="exampleInputPassword1">Password</label>
-            <input type="password" class="form-control" id="password-input" placeholder="Password">
+            <i class="fas fa-envelope fa-2x" id="email-icon"></i>
+            <label for="exampleInputEmail1" class="user-info" data-error="wrong" data-success="right">Email address</label>
+            <input type="email" class="form-control validate modal-inputs" id="email-input" placeholder="Email">
+          </div>
+          <div class="form-group">
+            <i class="fas fa-key fa-2x" id="password-icon"></i>
+            <label for="exampleInputPassword1" class="user-info modal-inputs" data-error="wrong" data-success="right">Password</label>
+            <input type="password" class="form-control validate" id="password-input" placeholder="Password">
           </div>
           <div style="display: none" id="alert" class="alert alert-danger" role="alert">
             <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
@@ -51,93 +70,84 @@
         <br />
         <p>Or log in <a href="/login">here</a></p>
       </div>
+
+
+
+
+
+
+{{!-- ADDING NEW CONTENT --}}
+<div id="new-media-container">
+
+    <div id="form-container">
+        <form method="POST" id="mediaSubmitForm" action="/watch/create">
+            <input type="text" id="mediaName" name="name" value=""> Title
+            <input type="radio" class="media-radio" name="media-type" value="movie"> Movie
+            <input type="radio" class="media-radio" name="media-type" value="tv"> TV Show
+            <select name="genre" id="genre">
+                <option value="action">Action</option>
+                <option value="animated">Animated</option>
+                <option value="comedy">Comedy</option>
+                <option value="documentary">Documentary</option>
+                <option value="drama">Drama</option>
+                <option value="horror">Horror</option>
+                <option value="romantic">Romantic</option>
+                <option value="sci-fi">Sci-Fi</option>
+                <option value="thriller">Thriller</option>
+            </select>
+            <button type="submit" value="" id="text-enter-button"><i class="fas fa-check fa-lg"></i></button>
+        </form>
+        <p id="error"></p>
+    </div>
+
+</div>
+
+{{!-- WATCHLIST --}}
+
+<div>
+
+
+
+</div>
+<div id="col-2">
+    <div class="col-md-6 text-center" class="task">
+        {{#each show_data}}
+        {{#if this.watched}}
+        <input class="form-control" type="text" placeholder="{{this.id}} . {{this.name}}" readonly>
+        {{/if}}
+        {{/each}}
     </div>
 </div>
 
-<div class="container">
-    <div class="row">
-        {{!-- WATCHLIST --}}
-        <div>
-            <div id="to-watch">UP NEXT</div>
-            <div class="watchlist">
-                {{#each show_data}}
-                {{#unless this.watched}}
-                {{/unless}}
-                {{/each}}
-            </div>
+{{!-- WATCH LIST SECTION  --}}
+<div id="container">
 
-        </div>
-        <div class="col-md-6 text-center" class="task">
-            <div class="row">
+    <div id="col-1">
+        <div id="unwatched">UP NEXT:
+            <div class="content-section">
                 {{#each show_data}}
                 {{#unless this.watched}}
-                <div class="col-md-9 text-center">
-                    <pre>
-                        {{!-- {{this.id}}.  --}}
-                        {{this.name}}
-					</pre>
-                    <!-- {{this.Date}} -->
-                </div>
-                <div class="col-md-3 text-center">
-                    <form class="watchedForm button-size">
-                        <input input type="hidden" class="mediaID" type="text" value={{this.id}}>
-                        <button type="submit" class="btn btn-outline-danger btn-sm">Watched?</button>
-                    </form>
-                </div>
+                <div class="content">{{name}}</div>
+                <button id="watch-content" placeholder={{this.id}}>Watched?</button>
                 {{/unless}}
                 {{/each}}
             </div>
-        </div>
-        <div class="col-md-6 text-center" class="task">
-            {{#each show_data}}
-            {{#if this.watched}}
-            <input class="form-control" type="text" placeholder="{{this.id}} . {{this.name}}" readonly>
-            {{/if}}
-            {{/each}}
         </div>
     </div>
+
+    <div id="col-2">
+        <div id="watched">WATCHED:
+            <div class="content-section">
+                {{#each show_data}}
+                {{#if this.watched}}
+                <div class="delete">{{name}}</div>
+                <button id="remove-from-list" placeholder={{this.id}}>Remove from List</button>
+                {{/if}}
+                {{/each}}
+            </div>
+        </div>
+    </div>
+
 </div>
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-12 text-center enter_section">
-            <p>You can add a show or movie you'd like to watch here:</p>
-            {{!-- <form id="mediaSubmitForm" action="/watch/create" method="POST">
-                <input type="text" class="form-control" name="name" value="" id="mediaName"><br>
-                <div class="form-group">
-                    <select class="form-control col-md-3" id="genre">
-                        <option>Select Genre</option>
-                        <option>Horror</option>
-                        <option>Comedy</option>
-                        <option>Drama</option>
-                        <option>Romance</option>
-                        <option>Action</option>
-                    </select>
-                </div>
-
-
-                <button type="submit" class="btn btn-danger btn-sm" id="text-enter-button">Submit</button>
-            </form> --}}
-            <div id="form-container">
-                <form method="POST" id="mediaSubmitForm" action="/watch/create">
-                    <input type="text" id="mediaName" name="name" value="">Title
-                    <input type="radio" name="media-type" value="movie"> Movie
-                    <input type="radio" name="media-type" value="tv"> TV Show
-                    <select name="genre" id="genre">
-                        <option value="action">Action</option>
-                        <option value="animated">Animated</option>
-                        <option value="comedy">Comedy</option>
-                        <option value="documentary">Documentary</option>
-                        <option value="drama">Drama</option>
-                        <option value="horror">Horror</option>
-                        <option value="romantic">Romantic</option>
-                        <option value="sci-fi">Sci-Fi</option>
-                        <option value="thriller">Thriller</option>
-                    </select>
-
-                    <input type="submit" value="Submit" id="text-enter-button">Submit
-                </form>
-                <p id="error"></p>
-            </div>
-        </div>
-    </div>
+</div>

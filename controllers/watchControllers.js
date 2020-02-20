@@ -11,9 +11,7 @@ router.get('/', function (req, res) {
 });
 
 router.get('/watch', function (req, res) {
-    // var newmedia = {
 
-    // }
     db.NewMedia.findAll({
         raw: true
     }).then(function (newmedia) {

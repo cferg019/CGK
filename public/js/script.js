@@ -16,10 +16,9 @@ $(document).ready(function () {
     $("#closeButtonSignUp").on("click", function () { toggleModal("signupmodal") })
     $("#closeButtonLogIn").on("click", function () { toggleModal("loginmodal") })
 
-    $(".watchedForm").on("submit", function (event) {
+    $(".watch-content").on("click", function (event) {
         event.preventDefault();
-
-        var mediaID = $(this).children(".mediaID").val();
+        var mediaID = $(this).attr("data-id")
         console.log(mediaID);
         $.ajax({
             method: "PUT",
@@ -36,19 +35,6 @@ $(document).ready(function () {
             $("#error").text("Please fill out all fields.")
         }
     })
-
-    $(".watch-content").on("click", function (event) {
-        event.preventDefault();
-        var mediaID = $(this).attr("data-id")
-        console.log(mediaID);
-        $.ajax({
-            method: "PUT",
-            url: "/watch/" + mediaID
-        }).then(function (data) {
-            // reload page to display new media proper column
-            location.reload();
-        });
-    });
 
     $(".remove-from-list").on("click", function () {
         console.log("you got clicked", $(this).attr("data-id"));

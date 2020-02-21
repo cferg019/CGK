@@ -7,6 +7,9 @@ var session = require("express-session");
 var passport = require("./config/passport");
 var db = require("./models");
 
+var userRoutes = require("./controllers/userController.js");
+var watchRoutes = require("./controllers/watchControllers.js");
+
 // Serve static content for the app from the "public" directory in the application directory.
 app.use(express.static("public"));
 
@@ -23,14 +26,8 @@ app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true 
 app.use(passport.initialize());
 app.use(passport.session());
 
-var routes = require("./controllers/watchControllers.js");
-
-app.use(routes);
-
-var userRoutes = require("./controllers/userController.js");
-
 app.use(userRoutes);
-
+app.use(watchRoutes);
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================

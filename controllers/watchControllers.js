@@ -5,13 +5,17 @@ var db = require('../models')
 var router = express.Router();
 // var watch = require('../models/watch.js');
 
+router.use(function (req, res, next) {
+    if (!req.user) {
+        res.redirect('/login')
+    } else {
+        next();
+    }
+});
+
 // get route -> index
 router.get('/', function (req, res) {
     res.redirect('/watch');
-});
-
-router.get('/login', function (req, res) {
-    res.render('login');
 });
 
 router.get('/watch', function (req, res) {

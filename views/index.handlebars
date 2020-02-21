@@ -25,6 +25,7 @@
                                 placeholder="Email">
                         </div>
                     </div>
+                    <br />
                     <div class="form-group">
                         <div class="input-wrapper">
                             <span class="fas fa-key fa-2x" id="password-icon"></span>
@@ -34,17 +35,15 @@
                                 placeholder="Password">
                         </div>
                     </div>
-                    {{!-- <div>
-                        <button type="submit" class="modal-btn">Login</button>
-                    </div> --}}
+                    <button type="submit" class="modal-btns">Login</button> --}}
                 </form>
-                <br />
-                <div class="redirect">Or sign up <a href="/">here</a></div>
+                {{!-- <br />
+                <p>Or sign up <a href="/">here</a></p> --}}
             </div>
         </div>
-
     </div>
 
+    {{!-- SIGN UP MODAL --}}
 
     {{!-- SIGN UP MODAL --}}
 
@@ -57,28 +56,28 @@
                 <h2 id="sign-title">Sign Up</h2>
                 <form class="signup" id="signup-info">
                     <div>
-                        <i class="fas fa-user fa-2x" id="user-icon"></i>
-                        <input type="text" id="orangeForm-name" class="form-control validate">
-                        <label data-error="wrong" data-success="right" for="orangeForm-name">Your name</label>
+                        <i class="fas fa-user fa-lg" id="user-icon"></i>
+                        <input type="text" id="orangeForm-name" class="form-control validate" placeholder="Email">
+                        <label data-error="wrong" data-success="right" for="orangeForm-name"></label>
                     </div>
                     <div class="form-group">
-                        <i class="fas fa-envelope fa-2x" id="email-icon"></i>
-                        <label for="exampleInputEmail1" class="user-info" data-error="wrong" data-success="right">Email
-                            address</label>
+                        <i class="fas fa-envelope fa-lg" id="email-icon"></i>
+                        <label for="exampleInputEmail1" class="user-info" data-error="wrong"
+                            data-success="right"></label>
                         <input type="email" class="form-control validate modal-inputs" id="email-input"
                             placeholder="Email">
                     </div>
                     <div class="form-group">
-                        <i class="fas fa-key fa-2x" id="password-icon"></i>
+                        <i class="fas fa-key fa-lg" id="password-icon"></i>
                         <label for="exampleInputPassword1" class="user-info modal-inputs" data-error="wrong"
-                            data-success="right">Password</label>
+                            data-success="right"></label>
                         <input type="password" class="form-control validate" id="password-input" placeholder="Password">
                     </div>
                     <div style="display: none" id="alert" class="alert alert-danger" role="alert">
                         <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
                         <span class="sr-only">Error:</span> <span class="msg"></span>
                     </div>
-                    <button type="submit" class="modal-btn">Sign Up</button>
+                    <button type="submit" class="modal-btns">Sign Up</button>
                 </form>
                 <br />
                 <div class="redirect">Or log in <a href="/">here</a></div>
@@ -86,63 +85,64 @@
         </div>
     </div>
 
+</div>
 
 
-    {{!-- ADDING NEW CONTENT --}}
-    <div id="new-media-container">
+{{!-- ADDING NEW CONTENT --}}
+<div id="new-media-container">
 
-        <div id="form-container">
-            <form method="POST" id="mediaSubmitForm" action="/watch/create">
-                <input type="text" id="mediaName" name="name" value=""> Title
-                <input type="radio" class="media-radio" name="media-type" value="movie"> Movie
-                <input type="radio" class="media-radio" name="media-type" value="tv"> TV Show
-                <select name="genre" id="genre">
-                    <option value="action">Action</option>
-                    <option value="animated">Animated</option>
-                    <option value="comedy">Comedy</option>
-                    <option value="documentary">Documentary</option>
-                    <option value="drama">Drama</option>
-                    <option value="horror">Horror</option>
-                    <option value="romantic">Romantic</option>
-                    <option value="sci-fi">Sci-Fi</option>
-                    <option value="thriller">Thriller</option>
-                </select>
-                <button type="submit" value="" id="text-enter-button"><i class="fas fa-check fa-lg"></i></button>
-            </form>
-            <p id="error"></p>
-        </div>
-
+    <div id="form-container">
+        <form method="POST" id="mediaSubmitForm" action="/watch/create">
+            <input type="text" id="mediaName" name="name" value=""> Title
+            <input type="radio" class="media-radio" name="media-type" value="movie"> Movie
+            <input type="radio" class="media-radio" name="media-type" value="tv"> TV Show
+            <select name="genre" id="genre">
+                <option value="action">Action</option>
+                <option value="animated">Animated</option>
+                <option value="comedy">Comedy</option>
+                <option value="documentary">Documentary</option>
+                <option value="drama">Drama</option>
+                <option value="horror">Horror</option>
+                <option value="romantic">Romantic</option>
+                <option value="sci-fi">Sci-Fi</option>
+                <option value="thriller">Thriller</option>
+            </select>
+            <button type="submit" value="" id="text-enter-button"><i class="fas fa-check fa-lg"></i></button>
+        </form>
+        <p id="error"></p>
     </div>
 
-    {{!-- WATCH LIST SECTION  --}}
-    <div id="container">
+</div>
 
-        <div id="col-1">
-            <div id="unwatched">UP NEXT:
-                <div class="content-section">
+{{!-- WATCH LIST SECTION  --}}
+<div id="container">
+
+    <div id="col-1">
+        <div id="unwatched">UP NEXT:
+            <div class="content-section">
+                <form class="watchedForm">
                     {{#each show_data}}
                     {{#unless this.watched}}
                     <div class="content">{{name}}</div>
-                    <button id="watch-content" placeholder={{this.id}}>Watched?</button>
+                    <button class="watch-content" data-id={{this.id}}>Watched?</button>
                     {{/unless}}
                     {{/each}}
-                </div>
+                </form>
             </div>
         </div>
+    </div>
 
-        <div id="col-2">
-            <div id="watched">WATCHED:
-                <div class="content-section">
-                    {{#each show_data}}
-                    {{#if this.watched}}
-                    <div class="delete">{{name}}</div>
-                    <button id="remove-from-list" placeholder={{this.id}}>Remove from List</button>
-                    {{/if}}
-                    {{/each}}
-                </div>
+    <div id="col-2">
+        <div id="watched">WATCHED:
+            <div class="content-section">
+                {{#each show_data}}
+                {{#if this.watched}}
+                <div class="delete">{{name}}</div>
+                <button class="remove-from-list" data-id={{this.id}}>Remove from List</button>
+                {{/if}}
+                {{/each}}
             </div>
         </div>
-
     </div>
 
 </div>

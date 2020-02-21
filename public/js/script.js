@@ -16,10 +16,9 @@ $(document).ready(function () {
     $("#closeButtonSignUp").on("click", function () { toggleModal("signupmodal") })
     $("#closeButtonLogIn").on("click", function () { toggleModal("loginmodal") })
 
-    $(".watchedForm").on("submit", function (event) {
+    $(".watch-content").on("click", function (event) {
         event.preventDefault();
-
-        var mediaID = $(this).children(".mediaID").val();
+        var mediaID = $(this).attr("data-id")
         console.log(mediaID);
         $.ajax({
             method: "PUT",
@@ -37,15 +36,11 @@ $(document).ready(function () {
         }
     })
 
-
-    
-
-    $(".delete").on("click", function () {
-        console.log("you got clicked", $(this).attr("id"));
+    $(".remove-from-list").on("click", function () {
+        console.log("you got clicked", $(this).attr("data-id"));
         event.preventDefault();
-
         $.ajax({
-            url: "/watch/" + $(this).attr("id"),
+            url: "/watch/" + $(this).attr("data-id"),
             type: "delete",
         }).then(function (data) {
             console.log(data);

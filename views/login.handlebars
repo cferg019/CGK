@@ -16,7 +16,7 @@
                             <span class="fas fa-envelope fa-2x" id="email-icon"></span>
                             <label for="exampleInputEmail1" class="user-info" data-error="wrong"
                                 data-success="right"></label>
-                            <input type="email" class="form-control validate modal-inputs" id="email-input"
+                            <input type="email" class="form-control validate modal-inputs" id="login-email-input"
                                 placeholder="Email">
                         </div>
                     </div>
@@ -26,11 +26,11 @@
                             <span class="fas fa-key fa-2x" id="password-icon"></span>
                             <label for="exampleInputPassword1" class="user-info modal-inputs" data-error="wrong"
                                 data-success="right"></label>
-                            <input type="password" class="form-control validate" id="password-input"
+                            <input type="password" class="form-control validate" id="login-password-input"
                                 placeholder="Password">
                         </div>
                     </div>
-                    <button type="submit" class="modal-btns">Login</button> --}}
+                    <button type="submit" class="modal-btns">Login</button>
                 </form>
                 {{!-- <br />
                 <p>Or sign up <a href="/">here</a></p> --}}
@@ -50,23 +50,18 @@
             <div>
                 <h2 id="sign-title">Sign Up</h2>
                 <form class="signup" id="signup-info">
-                    <div>
-                        <i class="fas fa-user fa-lg" id="user-icon"></i>
-                        <input type="text" id="orangeForm-name" class="form-control validate" placeholder="Email">
-                        <label data-error="wrong" data-success="right" for="orangeForm-name"></label>
-                    </div>
                     <div class="form-group">
                         <i class="fas fa-envelope fa-lg" id="email-icon"></i>
                         <label for="exampleInputEmail1" class="user-info" data-error="wrong"
                             data-success="right"></label>
-                        <input type="email" class="form-control validate modal-inputs" id="email-input"
+                        <input type="email" class="form-control validate modal-inputs" id="signup-email-input"
                             placeholder="Email">
                     </div>
                     <div class="form-group">
                         <i class="fas fa-key fa-lg" id="password-icon"></i>
                         <label for="exampleInputPassword1" class="user-info modal-inputs" data-error="wrong"
                             data-success="right"></label>
-                        <input type="password" class="form-control validate" id="password-input" placeholder="Password">
+                        <input type="password" class="form-control validate" id="signup-password-input" placeholder="Password">
                     </div>
                     <div style="display: none" id="alert" class="alert alert-danger" role="alert">
                         <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>

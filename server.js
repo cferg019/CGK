@@ -1,4 +1,5 @@
 var express = require("express");
+var morgan = require('morgan');
 
 var PORT = process.env.PORT || 8000;
 var app = express();
@@ -9,6 +10,8 @@ var db = require("./models");
 
 var userRoutes = require("./controllers/userController.js");
 var watchRoutes = require("./controllers/watchControllers.js");
+
+app.use(morgan('combined'));
 
 // Serve static content for the app from the "public" directory in the application directory.
 app.use(express.static("public"));

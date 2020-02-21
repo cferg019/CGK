@@ -11,6 +11,7 @@ router.get('/login', function (req, res) {
 });
 
 router.post("/api/login", passport.authenticate("local"), function (req, res) {
+  console.log('logging in', req.user)
   res.json(req.user);
 });
 

@@ -11,6 +11,16 @@ function closeModalIfClickedOutside(event) {
 
 $(document).ready(function () {
 
+    $.ajax({
+        method: "GET",
+        url: "/api/user_data"
+    }).then(function (data) {
+        // reload page to display new media proper column
+        $('#username').text('Welcome ' + data.email + '!')
+    }).catch(function(err) {
+        console.log('could not get user', err)
+    });
+
     $("button#logbtn.trigger").on("click", function () { toggleModal("loginmodal") })
     $("button#signbtn.trigger").on("click", function () { toggleModal("signupmodal") })
     $("#closeButtonSignUp").on("click", function () { toggleModal("signupmodal") })

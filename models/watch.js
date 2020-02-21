@@ -20,5 +20,14 @@ module.exports = function (sequelize, DataTypes) {
             defaultValue: false
         }
     });
+
+    NewMedia.associate = function (models) {
+        NewMedia.belongsTo(models.User, {
+            foreignKey: {
+                allowNull: false
+            }
+        });
+    };
+
     return NewMedia;
 };

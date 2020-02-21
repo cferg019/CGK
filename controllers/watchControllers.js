@@ -10,13 +10,17 @@ router.get('/', function (req, res) {
     res.redirect('/watch');
 });
 
+router.get('/login', function (req, res) {
+    res.render('login');
+});
+
 router.get('/watch', function (req, res) {
 
     db.NewMedia.findAll({
         raw: true
     }).then(function (newmedia) {
         console.log('got these shows back', newmedia)
-        res.render('index', {
+        res.render('watch', {
             show_data: newmedia
         });
     });

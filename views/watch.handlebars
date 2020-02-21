@@ -1,0 +1,59 @@
+
+{{!-- ADDING NEW CONTENT --}}
+<div id="new-media-container">
+
+    <div id="form-container">
+        <form method="POST" id="mediaSubmitForm" action="/watch/create">
+            <input type="text" id="mediaName" name="name" value=""> Title
+            <input type="radio" class="media-radio" name="media-type" value="movie"> Movie
+            <input type="radio" class="media-radio" name="media-type" value="tv"> TV Show
+            <select name="genre" id="genre">
+                <option value="action">Action</option>
+                <option value="animated">Animated</option>
+                <option value="comedy">Comedy</option>
+                <option value="documentary">Documentary</option>
+                <option value="drama">Drama</option>
+                <option value="horror">Horror</option>
+                <option value="romantic">Romantic</option>
+                <option value="sci-fi">Sci-Fi</option>
+                <option value="thriller">Thriller</option>
+            </select>
+            <button type="submit" value="" id="text-enter-button"><i class="fas fa-check fa-lg"></i></button>
+        </form>
+        <p id="error"></p>
+    </div>
+
+</div>
+
+{{!-- WATCH LIST SECTION  --}}
+<div id="container">
+
+    <div id="col-1">
+        <div id="unwatched">UP NEXT:
+            <div class="content-section">
+                <form class="watchedForm">
+                    {{#each show_data}}
+                    {{#unless this.watched}}
+                    <div class="content">{{name}}</div>
+                    <button class="watch-content" data-id={{this.id}}>Watched?</button>
+                    {{/unless}}
+                    {{/each}}
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="col-2">
+        <div id="watched">WATCHED:
+            <div class="content-section">
+                {{#each show_data}}
+                {{#if this.watched}}
+                <div class="delete">{{name}}</div>
+                <button class="remove-from-list" data-id={{this.id}}>Remove from List</button>
+                {{/if}}
+                {{/each}}
+            </div>
+        </div>
+    </div>
+
+</div>

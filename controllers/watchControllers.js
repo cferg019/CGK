@@ -19,9 +19,11 @@ router.get('/', function (req, res) {
 });
 
 router.get('/watch', function (req, res) {
-
     db.NewMedia.findAll({
-        raw: true
+        raw: true,
+        where: {
+            UserId: req.user.id
+        }
     }).then(function (newmedia) {
         console.log('got these shows back', newmedia)
         res.render('watch', {
@@ -36,7 +38,8 @@ router.post('/watch/create', function (req, res) {
         name: req.body.name,
         genre: req.body.genre,
         // mediaType: req.body.mediaType,
-        watched: false
+        watched: false,
+        UserId: req.user.id
     }).then(function (show) {
         console.log('created show', show);
         res.redirect('/');

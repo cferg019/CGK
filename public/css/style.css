@@ -129,7 +129,7 @@ input {
 
 .card-img {
     height: 100%;
-    max-width: 200px;
+    object-fit: cover;
 }
 
 #login-email-input, #login-password-input, #signup-password-input, #signup-email-input {
@@ -218,7 +218,7 @@ input {
     background-color: #fff;
     border-radius: 7px;
     box-shadow: 3px 3px 5px lightgrey;
-    padding: 20px;
+    padding: 1%;
     width: 50%;
     max-height: 300px;
 }

@@ -26,7 +26,7 @@ a {
     padding-bottom: 30px;
 }
 
-.modal {
+.my-modal {
     position: fixed;
     left: 0;
     top: 0;
@@ -86,11 +86,11 @@ a {
 
 #email-icon, #password-icon, #user-icon {
     color: #427a6b;
-    margin-left: 50px;
+    /* margin-left: 50px; */
 }
 
 #email-icon, #user-icon {
-    flex: 1;
+    /* flex: 1; */
 }
 
 .user-info {
@@ -118,8 +118,23 @@ input {
     flex-direction: row;
 }
 
-#email-input, #password-input {
-    flex: 1;
+.input-row {
+    margin-top: 2em;
+}
+
+.card-holder {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.card-img {
+    height: 100%;
+    max-width: 200px;
+}
+
+#login-email-input, #login-password-input, #signup-password-input, #signup-email-input {
+    width: 90%;
+    /* flex: 1; */
 }
 
 .redirect {
@@ -128,18 +143,19 @@ input {
 }
 
 .form-group {
-    justify-items: center;
-    margin: 0 auto;
-    padding: 2px;
-    width: 40%;
+    margin-left: 30px;
+    justify-content: left;
+    text-align: left;
 }
+
+
+
 .modal-btns {
     background-color: #1f2d3a;
     border-radius: 7px;
     color: #fff;
     font-family: 'Montserrat', sans-serif;
     font-size: 16px;
-    margin: 50px;
     padding: 7px;
     outline: none;
 }
@@ -161,11 +177,11 @@ input {
     align-items: center;
 }
 
-.form-group {
+/* .form-group {
     display: flex;
     flex-direction: column;
     align-items: center;
-}
+} */
 
 .wrapper {
     display: block;
@@ -196,21 +212,25 @@ input {
     justify-content: center;
     margin: auto;
     padding: 20px;
-    width: 60%;
+    width: 40%;
 }
 #form-container {
     background-color: #fff;
     border-radius: 7px;
     box-shadow: 3px 3px 5px lightgrey;
-    padding: 10px;
+    padding: 20px;
+    width: 50%;
+    max-height: 300px;
 }
 #mediaSubmitForm {
     border-radius: 7px;
     padding: 5px;
+    margin-top: 15px;
 }
-.media-raido {
+.media-radio {
     outline: none;
     color: #1f2d3a;
+    margin-right: 10px;
 }
 
 #genre {
@@ -265,12 +285,12 @@ option {
     width: 45%;
     display: flex;
     justify-content: center;
-    margin: auto;
+    /* margin: auto; */
 }
 
 #unwatched, #watched {
     font-family: 'Bebas Neue', cursive;
-    font-size: 40px;
+    font-size: 1.25em;
 }
 
 .content-section {
@@ -293,7 +313,7 @@ option {
     outline: none;
 }
 
-.remove-from-list, .watch-content:hover {
+.remove-from-list:hover, .watch-content:hover {
     background-color:#427a6b;
     color: #fff;
     outline: none;

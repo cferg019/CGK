@@ -7,9 +7,46 @@
 
     <div id="form-container">
         <form method="POST" id="mediaSubmitForm" action="/watch/create">
-            <input type="text" id="mediaName" name="name" value=""> Title
-            <input type="radio" class="media-radio" name="media-type" value="movie"> Movie
-            <input type="radio" class="media-radio" name="media-type" value="tv"> TV Show
+            <div class="form-group">
+                <label for="mediaName">Title</label>
+                <input type="text" id="mediaName" name="name" value="">
+            </div>
+            <div class="form-group">
+                <div class="form-check form-check-inline">
+                    <input checked type="radio" id="movieRadio" class="media-radio" name="media-type" value="Movie">
+                    <label class="form-check-label" for="inlineRadio1">Movie</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input type="radio" id="tvRadio" class="media-radio" name="media-type" value="TV">
+                    <label class="form-check-label" for="inlineRadio2">TV Show</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="genre">Genre</label>
+                <select name="genre" id="genre">
+                    <option value="action">Action</option>
+                    <option value="animated">Animated</option>
+                    <option value="comedy">Comedy</option>
+                    <option value="documentary">Documentary</option>
+                    <option value="drama">Drama</option>
+                    <option value="horror">Horror</option>
+                    <option value="romantic">Romantic</option>
+                    <option value="sci-fi">Sci-Fi</option>
+                    <option value="thriller">Thriller</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="modal-btns">Create</button>
+            </div>
+        </form>
+        {{!-- <form method="POST" id="mediaSubmitForm" action="/watch/create">
+            <div class="form-group">
+                <span>Title: </span><input type="text" id="mediaName" name="name" value="">
+            </div>
+            <div class="row">
+                <input type="radio" id="movieRadio" class="media-radio" name="media-type" value="Movie"> Movie
+                <input type="radio" id="tvRadio" class="media-radio" name="media-type" value="TV"> TV Show
+            </div>
             <select name="genre" id="genre">
                 <option value="action">Action</option>
                 <option value="animated">Animated</option>
@@ -22,7 +59,7 @@
                 <option value="thriller">Thriller</option>
             </select>
             <button type="submit" value="" id="text-enter-button"><i class="fas fa-check fa-lg"></i></button>
-        </form>
+        </form> --}}
         <p id="error"></p>
     </div>
 
@@ -30,33 +67,78 @@
 
 {{!-- WATCH LIST SECTION  --}}
 <div id="container">
-
-    <div id="col-1">
-        <div id="unwatched">UP NEXT:
-            <div class="content-section">
-                <form class="watchedForm">
-                    {{#each show_data}}
-                    {{#unless this.watched}}
-                    <div class="content">{{name}}</div>
-                    <button class="watch-content" data-id={{this.id}}>Watched?</button>
-                    {{/unless}}
-                    {{/each}}
+    <div id="col-2" class="card-holder">
+        <div id="unwatched" class="container">UP NEXT:
+            <div class="row">
+                {{#each show_data}}
+                {{#unless this.watched}}
+                <div class="col-6">
+                    <div class="card mb-3" style="max-width: 540px;">
+                        <div class="row no-gutters">
+                            <div class="col-md-4">
+                                <img src="{{this.posterUrl}}" class="card-img" alt="...">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h3 class="card-title">{{this.name}}</h3>
+                                    <p class="card-text text-muted">IMDB Rating: {{this.rating}}</p>
+                                    <p class="card-text text-muted">Year Released: {{this.year}}</p>
+                                    <button class="watch-content" data-id={{this.id}}>Watched?</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{/unless}}
+                {{/each}}
                 </form>
             </div>
         </div>
     </div>
 
-    <div id="col-2">
-        <div id="watched">WATCHED:
-            <div class="content-section">
+    <div id="col-2" class="card-holder">
+        <div id="watched" class="container">WATCHED:
+            <div class="row">
                 {{#each show_data}}
                 {{#if this.watched}}
-                <div class="delete">{{name}}</div>
-                <button class="remove-from-list" data-id={{this.id}}>Remove from List</button>
+                <div class="col-6">
+                    <div class="card mb-3" style="max-width: 540px;">
+                        <div class="row no-gutters">
+                            <div class="col-md-4">
+                                <img src="{{this.posterUrl}}" class="card-img" alt="...">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h3 class="card-title">{{this.name}}</h3>
+                                    <p class="card-text text-muted">IMDB Rating: {{this.rating}}</p>
+                                    <p class="card-text text-muted">Year Released: {{this.year}}</p>
+                                    <button class="remove-from-list" data-id={{this.id}}>Remove from List</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{!-- <div class="delete">{{name}}</div>
+                <button class="remove-from-list" data-id={{this.id}}>Remove from List</button> --}}
                 {{/if}}
                 {{/each}}
             </div>
         </div>
     </div>
-
 </div>
+{{!-- <div class="container">
+    <h1>Movie Search</h1>
+
+    <!-- This form will be where users input data about the movies -->
+    <form id="movie-form">
+      <label for="movie-input">Search for a movie</label>
+      <input type="text" id="movie-input"><br>
+
+      <!-- This button will trigger our AJAX call -->
+      <input id="find-movie" type="submit" value="Movie Search">
+    </form>
+
+    <!-- We'll be dumping our JSON contents in here -->
+    <div id="movie-view"></div>
+
+</div> --}}

@@ -17,7 +17,7 @@ $(document).ready(function () {
     }).then(function (data) {
         // reload page to display new media proper column
         $('#username').text('Welcome ' + data.email + '!')
-    }).catch(function(err) {
+    }).catch(function (err) {
         console.log('could not get user', err)
     });
 
@@ -40,10 +40,30 @@ $(document).ready(function () {
     });
 
     $("#mediaSubmitForm").on("submit", function (event) {
+        event.preventDefault();
         if ($("#mediaName").val() === "") {
-            event.preventDefault();
             $("#error").text("Please fill out all fields.")
+            return;
         }
+
+        var formData = {
+            name: $("#mediaName").val(),
+            genre: $("#genre").val(),
+            mediaType: $("input[name='media-type']:checked").val()
+        }
+
+        console.log('sending new media', formData)
+
+        $.post("/watch", formData)
+            .then(function (data) {
+                // reload page to display new media proper column
+                location.reload();
+            })
+            .catch(function() {
+                alert('Sorry, something went wrong, please try again later.')
+            })
+
+
     })
 
     $(".remove-from-list").on("click", function () {
@@ -63,3 +83,23 @@ if (window) {
     window.addEventListener("mousedown", closeModalIfClickedOutside)
 }
 
+// Code below to find movie or movie on click
+$("#find-movie").on("click", function (event) {
+
+    // event.preventDefault() can be used to prevent an event's default behavior.
+    // Here, it prevents the submit button from trying to submit a form when clicked
+    event.preventDefault();
+
+    // Here we grab the text from the input box
+    var movie = $("#movie-input").val();
+
+    // Here we construct our URL
+    var queryURL = "https://www.omdbapi.com/?t=" + movie + "&apikey=trilogy";
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+    }).then(function (response) {
+        $("#movie-view").text(JSON.stringify(response));
+    });
+}
+);

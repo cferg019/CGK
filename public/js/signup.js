@@ -13,6 +13,7 @@ $(document).ready(function() {
       };
   
       if (!userData.email || !userData.password) {
+        handleLoginErr('Please fill out all fields')
         return;
       }
 
@@ -35,11 +36,13 @@ $(document).ready(function() {
           window.location.replace("/");
           // If there's an error, handle it by throwing up a bootstrap alert
         })
-        .catch(handleLoginErr);
+        .catch(function(err) {
+          handleLoginErr(err.responseJSON)
+        });
     }
   
-    function handleLoginErr(err) {
-      $("#alert .msg").text(err.responseJSON);
+    function handleLoginErr(text) {
+      $("#alert .msg").text(text);
       $("#alert").fadeIn(500);
     }
   });
